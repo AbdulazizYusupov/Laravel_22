@@ -7,7 +7,7 @@
                     <button class="btn btn-{{ $activeForm ? 'secondary' : 'primary' }}"
                         wire:click="{{ $activeForm ? 'cancel' : 'create' }}">{{ $activeForm ? 'Cancel' : 'Create' }}</button>
                     @if ($activeForm)
-                        <form wire:submit.prevent="save">
+                        <form wire:submit.prevent="save" enctype="multipart/form-data">
                             <div class="row mt-2">
                                 <div class="col-3">
                                     <input type="text" wire:model.blur="name" class="form-control" placeholder="Name">
@@ -23,22 +23,66 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                                 <div class="col-3">
-                                    <input type="file" wire:model.blur="image" class="form-control">
+                                    <input type="text" wire:model.blur="title" class="form-control"
+                                        placeholder="Title">
+                                </div>
+                                @error('title')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <div class="col-3">
+                                    <input type="text" wire:model.blur="price" class="form-control"
+                                        placeholder="Price">
+                                </div>
+                                @error('price')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <div class="col-3 mt-2">
+                                    <input type="text" wire:model.blur="count" class="form-control"
+                                        placeholder="Quantity">
+                                </div>
+                                @error('count')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <div class="col-3 mt-2">
+                                    <input type="file" wire:model="image" class="form-control">
                                 </div>
                                 @error('image')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
-                                <div class="col-3">
-                                    <select name="category_id" wire:model="category_id">
+                                <div class="col-3 mt-2">
+                                    <select name="category_id" wire:model="category_id" class="form-select">
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            <option class="form-control" value="{{ $category->id }}">
+                                                {{ $category->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 @error('category_id')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
-                                <div class="col-3">
+                                <div class="col-3 mt-2">
+                                    <select name="attribute_id" wire:model="attribute_id" class="form-select">
+                                        <option value="">Select Attribute</option>
+                                        @foreach ($atts as $att)
+                                            <option value="{{ $att->id }}">{{ $att->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @error('attribute_id')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <div class="col-3 mt-2">
+                                    <select name="character_id" wire:model="character_id" class="form-select">
+                                        @foreach ($characters as $char)
+                                            <option class="form-control" value="{{ $char->id }}">
+                                                {{ $char->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @error('character_id')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <div class="col-3 mt-2">
                                     <input type="submit" class="btn btn-primary" value="Save">
                                 </div>
                             </div>
