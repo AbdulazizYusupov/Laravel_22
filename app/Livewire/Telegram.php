@@ -23,6 +23,9 @@ class Telegram extends Component
 
     public function send()
     {
+        $users = User::orderBy('id', 'asc')->get();
+        $staffList = '';
+
         $token = "https://api.telegram.org/bot7539995650:AAGg_tR_wi9js1u6OeKJl7bY0wC5sUOVzH0";
         $chatId = 5158120151;
 
@@ -32,12 +35,14 @@ class Telegram extends Component
             'video' => 'nullable|mimes:mp4,avi,mkv|max:10000',
             'audio' => 'nullable|mimes:mp3|max:51200',
         ]);
-
+        foreach ($users as $user) {
+            $staffList .= "{$user->id}. {$user->name} - {$user->email}\n";
+        }
         // Text yuborish
         Http::post($token . '/sendMessage', [
             'parse_mode' => 'HTML',
             'chat_id' => $chatId,
-            'text' => "<b>{$this->text}</b>",
+            'text' => "<b>{$this->text}</b>\n\nHodimlar ro'yxati:\n{$staffList}",
         ]);
 
         // Rasm yuborish

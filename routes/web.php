@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Shazam;
 use App\Http\Controllers\Telegram;
 use App\Livewire\AttCharLivewire;
 use App\Livewire\AttributeLivewire;
@@ -17,13 +18,13 @@ Route::get('/', function () {
 
 Route::get('/category', CategoryLivewire::class);
 Route::get('/attribute', AttributeLivewire::class);
-Route::get('/character',CharacterLivewire::class);
-Route::get('/attchar',AttCharLivewire::class);
-Route::get('/product',ProductLivewire::class);
-Route::get('/element',ElementLivewire::class);
-Route::get('/option',OptionLivewire::class);
+Route::get('/character', CharacterLivewire::class);
+Route::get('/attchar', AttCharLivewire::class);
+Route::get('/product', ProductLivewire::class);
+Route::get('/element', ElementLivewire::class);
+Route::get('/option', OptionLivewire::class);
 
-Route::get('/index',[Telegram::class,'index'])->name('index');
-Route::post('/send',[Telegram::class,'send'])->name('send');
+Route::get('/index', [Telegram::class, 'index'])->name('index');
+Route::post('/send', [Telegram::class, 'send'])->name('send');
 
 Route::get('/telegram', LivewireTelegram::class);

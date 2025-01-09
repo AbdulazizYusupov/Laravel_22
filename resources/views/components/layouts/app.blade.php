@@ -38,10 +38,7 @@
     <!-- FontAwesome Ikonalarini qo'shish -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
-
-
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -137,6 +134,18 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="/attribute" class="nav-link {{ request()->is('attribute') ? 'active' : '' }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-tags" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M8.243 1.757a2 2 0 0 1 2.828 0l4.5 4.5a2 2 0 0 1 0 2.828l-7 7a2 2 0 0 1-2.828 0l-4.5-4.5a2 2 0 0 1 0-2.828l7-7a2 2 0 0 1 2.828 0zM7.5 6.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+                                </svg>
+                                <p>
+                                    Attribute
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="/product" class="nav-link {{ request()->is('product') ? 'active' : '' }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
@@ -173,6 +182,7 @@
             return new bootstrap.Tooltip(tooltipTriggerEl);
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v1.x.x/dist/livewire-sortable.js"></script>
     <script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
     <!-- jQuery -->
